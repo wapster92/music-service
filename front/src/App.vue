@@ -52,8 +52,8 @@
           <nav class="menu-nav menu-nav--last">
             <ul class="menu-nav__list">
               <li class="menu-nav__item">
-                <a href="#" class="menu-nav__link">
-                  Settings</a>
+                <router-link :to="{name: 'user', params: {id: user.id}}" class="menu-nav__link">
+                  Настройки</router-link>
               </li>
               <li class="menu-nav__item">
                 <a href="#" class="menu-nav__link">

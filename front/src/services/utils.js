@@ -28,3 +28,13 @@ export const debounce = (func, delay) => {
         inDebounce = setTimeout(() => func.apply(context, args), delay)
     }
 }
+
+export const getIndexArr = (arr, name) => {
+    let index = 0
+    arr.forEach((el, i) => {
+        if(el.name == name) {
+            index = i
+        }
+    })
+    return index
+}
