@@ -27,8 +27,11 @@
             width: 100%;
             height: 160px;
             display: flex;
-            @media (max-width: 415px) {
-                height: 200px;
+            @media (max-width: 655px) {
+                height: 120px;
+            }
+            @media (max-width: 335px) {
+                height: 110px;
             }
         }
         &__img {
@@ -40,10 +43,16 @@
             margin: .4em 0 0;
             font-size: 16px;
             font-weight: 400;
+            @media (max-width: 655px) {
+                font-size: 14px;
+            }
         }
         &__album {
             font-size: 14px;
             font-weight: 300;
+            @media (max-width: 655px) {
+                font-size: 13px;
+            }
         }
     }
 </style>

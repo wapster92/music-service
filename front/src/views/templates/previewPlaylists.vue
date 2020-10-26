@@ -17,7 +17,6 @@
         },
         computed: {
             audios() {
-                
                 return this.$store.state.previewPlaylists.audios
             }
         },
@@ -34,14 +33,12 @@
         //grid-template-rows: repeat(auto-fit, 160px);
         justify-content: center;
         gap: 30px;
-        @media (max-width: 550px) {
-            gap: 20px;
+        @media (max-width: 655px) {
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, 120px);
         }
-        @media (max-width: 415px) {
-            grid-template-columns: repeat(auto-fit, 200px);
-        }
-        &__item {
-
+        @media (max-width: 335px) {
+            grid-template-columns: repeat(auto-fit, 110px);
         }
     }
 </style>
