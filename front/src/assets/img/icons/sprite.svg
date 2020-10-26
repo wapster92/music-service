@@ -1,0 +1,61 @@
+<svg width="0" height="0" class="hidden">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 19.5" id="bel">
+    <path d="M14 8.5c0-3.07-1.64-5.64-4.5-6.32V1.5a1.5 1.5 0 0 0-3 0v.68C3.63 2.86 2 5.42 2 8.5v5l-2 2v1h16v-1l-2-2v-5zm-6 11a1.757 1.757 0 0 0 .4-.04 2.029 2.029 0 0 0 1.44-1.18 2.007 2.007 0 0 0 .15-.78h-4a2.014 2.014 0 0 0 2.01 2z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" id="burger">
+    <path d="M0 0v2h18V0H0zm0 7h18V5H0v2zm0 5h18v-2H0v2z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="help">
+    <path d="M10 4a4 4 0 0 0-4 4h2a2 2 0 0 1 4 0c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4zm0 14a8 8 0 1 1 8-8 8.011 8.011 0 0 1-8 8zm0-18a10 10 0 1 0 10 10A10 10 0 0 0 10 0zM9 16h2v-2H9v2z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17" id="home">
+    <path d="M8 17v-6h4v6h5V9h3L10 0 0 9h3v8h5z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="lib">
+    <path d="M2 4H0v14a2.006 2.006 0 0 0 2 2h14v-2H2V4zm14 1h-3v5.5A2.5 2.5 0 1 1 10.5 8a2.447 2.447 0 0 1 1.5.51V3h4v2zm2-5H6a2.006 2.006 0 0 0-2 2v12a2.006 2.006 0 0 0 2 2h12a2.006 2.006 0 0 0 2-2V2a2.006 2.006 0 0 0-2-2z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18.34" id="like">
+    <path d="M10 18.35l-1.45-1.32C3.4 12.36 0 9.28 0 5.5A5.447 5.447 0 0 1 5.5 0a5.889 5.889 0 0 0 9 0A5.447 5.447 0 0 1 20 5.5c0 3.78-3.4 6.86-8.55 11.54z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20.94" id="new">
+    <path d="M12 11.46h-2v-6h2v6zm0 4h-2v-2h2v2zm10-5l-2.44-2.78L19.9 4l-3.61-.82L14.4 0 11 1.46 7.6 0 5.71 3.18l-3.61.81.34 3.68L0 10.46l2.44 2.78-.34 3.69 3.61.82 1.89 3.18 3.4-1.47 3.4 1.46 1.89-3.18 3.61-.82-.34-3.68z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="next">
+    <title>next</title>
+    <path d="M16 27V17L6 27V5l10 10V5l11 11z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="pause">
+    <title>pause</title>
+    <path d="M4 4h10v24H4zm14 0h10v24H18z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="play-list">
+    <title>play</title>
+    <path d="M6 4l20 12L6 28z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 14" id="play">
+    <path d="M14 0v8.18A3 3 0 1 0 16 11V2h3V0h-5zM0 10h8V8H0v2zm12-6H0v2h12V4zm0-4H0v2h12V0z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="plus">
+    <path d="M14 8H8v6H6V8H0V6h6V0h2v6h6v2z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="prev">
+    <title>prev</title>
+    <path d="M18 5v10L28 5v22L18 17v10L7 16z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20" id="random">
+    <path d="M14 15H4v-3l-4 4 4 4v-3h12v-6h-2v4zM4 5h10v3l4-4-4-4v3H2v6h2V5z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="running">
+    <path d="M10.83 9.41l-1.41 1.41 3.13 3.13L10.5 16H16v-5.5l-2.04 2.04zM10.5 0l2.04 2.04L0 14.59 1.41 16 13.96 3.46 16 5.5V0h-5.5zM6.59 5.17L1.41 0 0 1.41l5.17 5.17z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 17.5" id="search">
+    <path d="M6.5 11A4.5 4.5 0 1 1 11 6.5 4.494 4.494 0 0 1 6.5 11zm6 0h-.79l-.28-.27a6.51 6.51 0 1 0-.7.7l.27.28v.79l5 4.99L17.49 16z" fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.47 20" id="settings">
+    <path d="M9.73 13.5a3.5 3.5 0 1 1 3.5-3.5 3.5 3.5 0 0 1-3.5 3.5zm7.43-2.52a6.895 6.895 0 0 0 0-1.96l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.306 7.306 0 0 0-1.69-.98L12.22.42a.488.488 0 0 0-.49-.42h-4a.488.488 0 0 0-.49.42l-.38 2.65a7.683 7.683 0 0 0-1.69.98l-2.49-1a.488.488 0 0 0-.61.22l-2 3.46a.493.493 0 0 0 .12.64L2.3 9.02a6.9 6.9 0 0 0 0 1.96L.19 12.63a.5.5 0 0 0-.12.64l2 3.46a.5.5 0 0 0 .61.22l2.49-1a7.306 7.306 0 0 0 1.69.98l.38 2.65a.488.488 0 0 0 .49.42h4a.488.488 0 0 0 .49-.42l.38-2.65a7.683 7.683 0 0 0 1.69-.98l2.49 1a.488.488 0 0 0 .61-.22l2-3.46a.5.5 0 0 0-.12-.64z"
+      fill-rule="evenodd"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 19" id="star">
+    <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z" fill-rule="evenodd"></path>
+  </symbol>
+</svg>
