@@ -116,4 +116,15 @@ router.post('/check-audio', async (req, res) => {
     }
 })
 
+router.post('/remove-playlist', async (req, res) => {
+    const user = await User.findById({_id: req.body.userId})
+    user.playLists.splice(getIndexEl(user.playLists, 'name', req.body.name), 1)
+    user.markModified('playLists')
+    await user.save()
+    res.send(JSON.stringify({
+        message: 'ok',
+        playLists: user.playLists
+    }))
+})
+
 module.exports = router

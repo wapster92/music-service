@@ -72,10 +72,13 @@
             border: 2px solid var(--border-color);
             .play-list__name {
                 grid-column: span 1;
+                padding-bottom: 0;
+                font-weight: 400;
             }
             .play-list__artist {
                 grid-column: span 1;
                 grid-row: 2 / 3;
+                padding-top: 0;
             }
             .play-list__year {
                 display: none;
@@ -91,7 +94,7 @@
         }
         &--my-list {
             grid-template-columns: 1.5fr 1.5fr auto;
-            @media (max-width: 440px) {
+            @media (max-width: 490px) {
                 grid-template-columns: 1.5fr auto;
                 border-bottom: 2px solid var(--border-color);
             }

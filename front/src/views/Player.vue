@@ -75,6 +75,7 @@
                     let howl = new Howl({
                         src: [`${keys.BASE_URL}/${el.path}`],
                         html5: true,
+                        ctx: true,
                         volume: _this.volume,
                         preload: false,
                         onend() {
@@ -162,7 +163,7 @@
                 }
             },
             isPlaying() {
-                return this.sounds[this.index].playing()
+                    return this.sounds[this.index].playing()
             },
             volume() {
                 return this.$store.state.player.volume

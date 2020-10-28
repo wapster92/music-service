@@ -27,6 +27,9 @@ export default {
                 state.avatar = ''
                 state.playLists = []
             }
+        },
+        changeAvatar(state, payload) {
+            state.avatar = payload
         }
     },
     getters: {},

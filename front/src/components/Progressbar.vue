@@ -78,7 +78,9 @@
             this.$store.commit('setProgressBarWidth', this.$refs.bar.offsetWidth)
             this.$store.commit('setCarriageWidth', this.$refs.carriage.offsetWidth)
             window.addEventListener('resize', debounce(e => {
-                this.$store.commit('setProgressBarWidth', this.$refs.bar.offsetWidth)
+                if(this.$refs.bar) {
+                    this.$store.commit('setProgressBarWidth', this.$refs.bar.offsetWidth)
+                }
             }, 100))
         }
     }

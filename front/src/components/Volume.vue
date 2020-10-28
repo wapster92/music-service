@@ -98,6 +98,7 @@
             &:hover, &:focus {
                 .volume__status {
                     opacity: 1;
+                    height: 90px;
                 }
                 svg {
                     fill: var(--hover-color);
@@ -117,7 +118,9 @@
             height: 90px;
             opacity: 0;
             transition: opacity var(--transition-time);
-
+            @media (max-width: /*1024px*/ 400px) {
+                display: none;
+            }
         }
         &__icon {
             height: 30px;

@@ -1,12 +1,13 @@
 <template>
     <div class="window window--playlist">
-        <MyPlayItem v-for="(file, index) of audio"
-                    :trackName="file.name"
-                    :artist="file.artist"
-                    :index="index"
-                    :name="name"
-        >
-        </MyPlayItem>
+        <div class="playlist-full" v-if="audio.length > 0">
+            <MyPlayItem v-for="(file, index) of audio" :key="file.name"
+                        :trackName="file.name"
+                        :artist="file.artist"
+                        :index="index"
+                        :name="name"></MyPlayItem>
+        </div>
+        <h3 class="empty-playlist" v-else>Здесь пока нет треков</h3>
     </div>
 </template>
 
@@ -29,13 +30,14 @@
         },
         created() {
             this.$store.dispatch('getPlayLists')
-            this.$store.commit('removeDataOfPlayer')
-            this.$store.commit('setDataToPlayer', this.audio)
-            // this.$store.dispatch('addDataToPlayer')
         }
     }
 </script>
 
 <style lang="scss">
-
+    .empty-playlist {
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
 </style>
