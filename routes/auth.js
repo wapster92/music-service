@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
                 avatar: user.avatar,
                 login: user.login,
                 token: `Bearer ${token}`,
-                playList: user.playList
+                playLists: user.playLists
             }))
         } else {
             res.send(JSON.stringify('Пароль не верен'))
@@ -82,6 +82,13 @@ router.post('/exit', async (req, res) => {
     res.send(JSON.stringify({
         auth: false,
         message: 'Bye bye'
+    }))
+})
+
+router.post('/delete-account', async (req, res) => {
+    const user = await User.findByIdAndDelete({_id: req.body.id})
+    res.send(JSON.stringify({
+        message: 'Аккаунт удален'
     }))
 })
 

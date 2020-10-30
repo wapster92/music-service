@@ -56,17 +56,7 @@
                 duration: '00:00'
             }
         },
-        mounted() {
-            this.$store.commit('showPlayer', false)
-            this.addPlayTracks()
-            this.setProgress = throttle(function (seek) {
-                this.$store.dispatch('changeProgressAndSeek', seek)
-            }, 60)
-            bus.$on('changeProgress', debounce(val => {
-                this.sounds[this.index].seek(val)
-                this.sounds[this.index].play()
-            }, 300))
-        },
+
         methods: {
             addPlayTracks() {
                 Howler.unload()
@@ -91,18 +81,6 @@
                             _this.setDuration()
                             const getProgress = () =>{
                                 if(howl.playing() && !_this.dragCarriage) {
-                                    let seek = howl.seek()
-                                    _this.setProgress(seek)
-                                    _this.getCurrentTime(seek)
-                                    requestAnimationFrame(getProgress)
-                                }
-                            }
-                            getProgress()
-                        },
-                        onseek() {
-                            _this.setDuration()
-                            const getProgress = () =>{
-                                if(howl.playing()) {
                                     let seek = howl.seek()
                                     _this.setProgress(seek)
                                     _this.getCurrentTime(seek)
@@ -192,6 +170,7 @@
         watch: {
             index(val) {
                 Howler.stop()
+                this.currentTime = '00:00'
                 this.startPlay(val)
             },
             playList() {
@@ -200,7 +179,23 @@
                 this.addPlayTracks()
                 this.startPlay(this.index)
             },
-        }
+            volume(val) {
+                Howler.volume(val)
+            }
+        },
+        created() {
+            this.addPlayTracks()
+        },
+        mounted() {
+            this.$store.commit('showPlayer', false)
+            this.setProgress = throttle(function (seek) {
+                this.$store.dispatch('changeProgressAndSeek', seek)
+            }, 60)
+            bus.$on('changeProgress', debounce(val => {
+                this.sounds[this.index].seek(val)
+                this.sounds[this.index].play()
+            }, 300))
+        },
     }
 </script>
 

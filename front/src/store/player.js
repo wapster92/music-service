@@ -67,6 +67,10 @@ export default {
                 commit('setIndexPlayer', payload.index)
                 commit('showPlayer', true)
             }
+            setTimeout(() => {
+                commit('setSeek', 0)
+                commit('setProgress', 0)
+            }, 80)
         },
         changeProgressAndSeek({commit, state}, payload) {
             let result = (payload / state.duration) * state.progressBarWidth

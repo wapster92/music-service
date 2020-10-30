@@ -25,7 +25,8 @@
                 draging: false,
                 volumeCarriage: 0,
                 volumeVal: 1,
-                matrix: `matrix(1, 0, 0, 1, 0, 0)`
+                // matrix: `matrix(1, 0, 0, 1, 0, 0)`,
+                volumeLine: 0
             }
         },
         methods: {
@@ -56,30 +57,46 @@
                 this.setVolumeVal(this.volumeCarriage)
             },
             setVolumeVal(val) {
-                this.volumeVal = 100 - val / this.volumeLine * 100
-                let volume = this.volumeVal / 100
-                this.matrix = `matrix(1, 0, 0, 1, 0, ${this.volumeCarriage})`
-                Howler.volume(volume)
-                this.$store.commit('setVolume', volume)
+                if(this.$store.state.windowWidth > 1024) {
+                    this.volumeVal = 100 - val / this.volumeLine * 100
+                    let volume = this.volumeVal / 100
+                    this.matrix = `matrix(1, 0, 0, 1, 0, ${this.volumeCarriage})`
+                    this.$store.commit('setVolume', volume)
+                }
             }
         },
         computed: {
-            volumeLine() {
-                return this.$refs.volumeLine.getBoundingClientRect().height
+            matrix: {
+                get() {
+                    return `matrix(1, 0, 0, 1, 0, ${this.volumeCarriage}`
+                },
+                set(val) {
+
+                }
             },
+            /*volumeLine() {
+                return this.$refs.volumeLine.getBoundingClientRect().height
+            },*/
             volume() {
                 return this.$store.state.player.volume
             },
             startVolumeCarriage() {
-                return this.volumeLine * (this.volume * 100) / 100
+                return this.volumeLine - (this.volumeLine * (this.volume * 100) / 100)
             }
         },
         components: {
             VolumeSVG
         },
         mounted() {
+            this.volumeLine = this.$refs.volumeLine.getBoundingClientRect().height
+            this.volumeVal = this.volume * 100
             this.volumeCarriage = this.startVolumeCarriage
-            this.setVolumeVal(this.startVolumeCarriage)
+            //this.setVolumeVal(this.startVolumeCarriage)
+            window.addEventListener('resize', e => {
+                if (window.innerWidth > 1024) {
+                    this.volumeLine = this.$refs.volumeLine.getBoundingClientRect().height
+                }
+            })
         }
     }
 
@@ -118,7 +135,7 @@
             height: 90px;
             opacity: 0;
             transition: opacity var(--transition-time);
-            @media (max-width: /*1024px*/ 400px) {
+            @media (max-width: 1024px) {
                 display: none;
             }
         }

@@ -55,7 +55,6 @@ router.post('/avatar-add', async (req, res) => {
         let pathTemp = path.join(__dirname, '..', req.files.avatar[0].path)
         let newPath = path.join(__dirname, '../storage/avatars', req.body.id, req.files.avatar[0].filename)
         fs.renameSync(pathTemp, newPath)
-        console.log(req.files.avatar[0])
         const user = await User.findById({_id: req.body.id})
         user.avatar = `storage/avatars/${req.body.id}/${req.files.avatar[0].filename}`
         user.save()

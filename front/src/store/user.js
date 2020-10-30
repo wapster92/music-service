@@ -15,18 +15,17 @@ export default {
             state.auth = payload.auth
             state.login = payload.login
             state.avatar = payload.avatar
+            state.playLists = payload.playLists
         },
         addPlayLists(state, payload) {
             state.playLists = payload
         },
         exit(state, payload) {
-            if (!payload.auth) {
-                state.id = ''
-                state.auth = false
-                state.login = ''
-                state.avatar = ''
-                state.playLists = []
-            }
+            state.id = ''
+            state.auth = false
+            state.login = ''
+            state.avatar = ''
+            state.playLists = []
         },
         changeAvatar(state, payload) {
             state.avatar = payload
@@ -52,7 +51,8 @@ export default {
                         id: result.id,
                         auth: result.auth,
                         login: result.login,
-                        avatar: result.avatar
+                        avatar: result.avatar,
+                        playLists: result.playLists
                     })
                     router.push('/')
                 }
@@ -147,6 +147,20 @@ export default {
                 })
             })
             const result = await response.json()
+        },
+        async deleteAccount({commit, state}, payload) {
+            const res = await fetch(`${keys.BASE_URL}/auth/delete-account`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: payload.id
+                })
+            })
+            const result = await res.json()
+            commit('exit')
+
         }
     }
 }

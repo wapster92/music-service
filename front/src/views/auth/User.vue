@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="playlists">
+        <div class="playlists" v-if="user.playLists.length > 0">
             <h3 class="playlists__title">Плейлисты</h3>
             <ul class="playlists__list">
                 <li class="playlists__item" v-for="playlist of user.playLists">
@@ -20,7 +20,7 @@
             </ul>
         </div>
         <div class="user-controls">
-            <button class="user-controls__btn btn">Удалить</button>
+            <button class="user-controls__btn btn" @click="deleteAccount">Удалить</button>
         </div>
     </div>
 </template>
@@ -81,6 +81,9 @@
                 } catch (e) {
 
                 }
+            },
+            deleteAccount() {
+                this.$store.dispatch('deleteAccount', {id: this.user.id})
             }
         },
         components: {

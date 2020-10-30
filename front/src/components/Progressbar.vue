@@ -1,7 +1,11 @@
 <template>
     <div class="bar">
         <div class="bar__line" ref="bar">
-            <div class="bar__carriage" :style="{transform: `translateX(${progress}px)`}" ref="carriage" @mousedown="startDrag"></div>
+            <div class="bar__carriage" :style="{transform: `translateX(${progress}px)`}" ref="carriage"
+                 @mousedown="startDrag"
+                 @touchstart="touchStartDrag"
+                 >
+                </div>
             <div class="bar__end-line"></div>
         </div>
     </div>
@@ -15,7 +19,7 @@
         name: 'Progressbar',
         data() {
             return {
-
+                previousTouch: null
             }
         },
         computed: {
@@ -47,6 +51,25 @@
                 document.body.addEventListener('mousemove', this.move)
                 document.body.addEventListener('mouseleave', this.stopDrop)
                 document.body.addEventListener('mouseup', this.stopDrop)
+            },
+            touchStartDrag(e) {
+                this.$store.commit('setDragCarriage', true)
+                let touchMove = evt => {
+                    let touch = evt.touches[0]
+                    if(this.previousTouch) {
+                        let result = touch.clientX - this.previousTouch.clientX
+                        this.setProgress(result)
+                    }
+                    this.previousTouch = touch
+
+                }
+                let touchend = evt => {
+                    document.removeEventListener('touchmove', touchMove)
+                    document.removeEventListener('touchend', touchend)
+                    this.$store.commit('setDragCarriage', false)
+                }
+                document.addEventListener('touchmove', touchMove)
+                document.addEventListener('touchend', touchend)
             },
             move(e) {
                 if(this.dragCarriage) {
