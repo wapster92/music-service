@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
 const mm = require('music-metadata')
-const passport = require('passport')
+
 
 const Music = require('../models/music')
 
@@ -59,6 +59,7 @@ const cyrToTranslit = (str) => {
 }
 
 router.post('/add', async (req, res) => {
+    console.log('test')
     const storage = multer.diskStorage({
         destination(req, file, cb) {
             cb(null, 'storage/temp')

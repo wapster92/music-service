@@ -43,9 +43,15 @@ router.get('/play-list/:id', async (req, res) => {
 
 router.get('/my-play-list/:id', async (req, res) => {
     const user = await User.findOne({_id: req.params.id}).lean()
-    res.send(JSON.stringify({
-        playList: user.playLists
-    }))
+    if(user) {
+        res.send(JSON.stringify({
+            playList: user.playLists
+        }))
+    } else {
+        res.send(JSON.stringify({
+            message: 'User is undefined'
+        }))
+    }
 })
 
 router.post('/add-play-list', async (req, res) => {

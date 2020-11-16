@@ -160,7 +160,6 @@ export default {
             })
             const result = await res.json()
             commit('exit')
-
         }
     }
 }
