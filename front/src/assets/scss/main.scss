@@ -151,15 +151,20 @@ a {
 }
 
 .main {
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
     display: grid;
     min-height: calc(100vh - 90px);
     grid-template-columns: 268px 100%;
-    @include transition(transform);
     transform: translateX(-268px);
+    //overflow-x: hidden;
+    //transition: transform var(--transition-time);
     &--active {
         transform: translateX(0);
+        overflow-x: hidden;
+    }
+    @media (min-width: 1025px) {
+        transition: transform var(--transition-time);
     }
 }
 .side-bar {

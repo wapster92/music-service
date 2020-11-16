@@ -1,7 +1,7 @@
 <template>
     <div class="volume">
         <div class="volume__wrap">
-            <div class="volume__icon">
+            <div class="volume__icon" @click="changeMute">
                 <VolumeSVG></VolumeSVG>
             </div>
             <div class="volume__status">
@@ -16,7 +16,7 @@
 
 <script>
     import VolumeSVG from '@/assets/img/icons/volume.svg'
-
+    import {Howler} from 'howler'
 
     export default {
         name: 'Volume',
@@ -25,11 +25,15 @@
                 draging: false,
                 volumeCarriage: 0,
                 volumeVal: 1,
-                // matrix: `matrix(1, 0, 0, 1, 0, 0)`,
-                volumeLine: 0
+                volumeLine: 0,
+                mute: false
             }
         },
         methods: {
+            changeMute() {
+                !this.mute ? Howler.mute(true) : Howler.mute(false)
+                this.mute = !this.mute
+            },
             startDrag() {
                 this.draging = true
                 this.$refs.carriage.style.cursor = 'grabbing'
@@ -74,9 +78,6 @@
 
                 }
             },
-            /*volumeLine() {
-                return this.$refs.volumeLine.getBoundingClientRect().height
-            },*/
             volume() {
                 return this.$store.state.player.volume
             },

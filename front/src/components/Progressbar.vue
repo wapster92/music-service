@@ -3,7 +3,7 @@
         <div class="bar__line" ref="bar">
             <div class="bar__carriage" :style="{transform: `translateX(${progress}px)`}" ref="carriage"
                  @mousedown="startDrag"
-                 @touchstart="touchStartDrag"
+                 @touchstart.stop="touchStartDrag"
                  >
                 </div>
             <div class="bar__end-line"></div>

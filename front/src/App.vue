@@ -1,22 +1,25 @@
 <template>
-    <div id="app" :class="{'overlay': modal}" @keydown.esc="closeModal">
+    <div id="app" :class="{'overlay': modal}"
+         @keydown.esc="closeModal"
+         @touchstart="swipeMenu"
+    >
         <header class="header">
             <div class="header__btn-wrap">
                 <div class="menu-btn" @click="toggleMenu">
                     <div class="menu-btn__icon">
                         <ListSVG></ListSVG>
                     </div>
-                    <span class="menu-btn__text">Menu</span>
+                    <span class="menu-btn__text">Меню</span>
                 </div>
             </div>
             <div class="header__main">
                 <nav class="login">
                     <ul class="login__list" v-if="!user.auth">
                         <li class="login__item">
-                            <router-link to="/login" class="login__link">Login</router-link>
+                            <router-link to="/login" class="login__link">Войти</router-link>
                         </li>
                         <li class="login__item">
-                            <router-link to="/register">Register</router-link>
+                            <router-link to="/register">Регистрация</router-link>
                         </li>
                     </ul>
                     <router-link :to="{name: 'user', params: {id: user.id}}" class="login__auth" v-else>
@@ -27,7 +30,7 @@
             </div>
         </header>
         <main class="main" :class="{'main--active': menuActive}">
-            <aside class="side-bar" @mouseleave="toggleMenu">
+            <aside class="side-bar" @mouseleave="toggleMenu" @click="closeMenu">
                 <div class="menu">
                     <nav class="menu-nav">
                         <ul class="menu-nav__list">
@@ -35,7 +38,7 @@
 
                                 <router-link to="/" class="menu-nav__link">
                                     <HomeSVG></HomeSVG>
-                                    Home
+                                    Главная
                                 </router-link>
                             </li>
 
@@ -55,14 +58,9 @@
                     <nav class="menu-nav menu-nav--last">
                         <ul class="menu-nav__list">
                             <li class="menu-nav__item">
-                                <router-link :to="{name: 'user', params: {id: user.id}}" class="menu-nav__link">
+                                <router-link :to="{name: 'user', params: {id: user.id}}" v-if="user.auth" class="menu-nav__link">
                                     Настройки
                                 </router-link>
-                            </li>
-                            <li class="menu-nav__item">
-                                <a href="#" class="menu-nav__link">
-                                    Help
-                                </a>
                             </li>
                             <li class="menu-nav__item" v-if="user.auth">
                                 <a href="#" class="menu-nav__link" @click.prevent="exit">
@@ -135,6 +133,34 @@
             },
             closeModal() {
                 this.$store.dispatch('closeModal')
+            },
+            swipeMenu(e) {
+                let touch = e.touches[0]
+                let touchMove = evt => {
+                    let touchMove = evt.touches[0]
+                    let moveSize = touch.screenX - touchMove.screenX
+
+                    if(moveSize < 100 && touch.screenX < touchMove.screenX) {
+                        this.menuActive = true
+                    }
+
+                    if(moveSize > 100 && touch.screenX > touchMove.screenX) {
+                        this.menuActive = false
+                    }
+
+                    console.log(moveSize)
+                }
+                let touchEnd = evt => {
+                    document.removeEventListener('touchmove', touchMove)
+                    document.removeEventListener('touchend', touchEnd)
+                }
+                document.addEventListener('touchmove', touchMove)
+                document.addEventListener('touchend', touchEnd)
+            },
+            closeMenu(e) {
+                if(e.target.tagName === 'A' && this.windowWidth <= 1024) {
+                    this.menuActive = false
+                }
             }
         },
         computed: {
@@ -147,7 +173,9 @@
             avatar() {
                 return `${keys.BASE_URL}/${this.user.avatar}`
             },
-
+            widowWidth() {
+                return this.$store.state.windowWidth
+            }
         },
         components: {
             Modal,
@@ -159,12 +187,10 @@
         mounted() {
             this.$store.dispatch('closeModal')
             this.$store.dispatch('getPlayLists')
-            document.addEventListener('DOMContentLoaded', e => {
-                this.$store.commit('changeWindowWidth', window.innerWidth)
-                if (window.innerWidth <= 1024) {
-                    this.$store.commit('setVolume', 1)
-                }
-            })
+            this.$store.commit('changeWindowWidth', window.innerWidth)
+            if (window.innerWidth <= 1024) {
+                this.$store.commit('setVolume', 1)
+            }
             window.addEventListener('resize', debounce(e => {
                 this.$store.commit('changeWindowWidth', window.innerWidth)
             }, 100))
