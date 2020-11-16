@@ -49,9 +49,11 @@ router.post('/avatar-add', async (req, res) => {
     }).fields([{name: 'avatar'}])
 
     upload(req, res, async (err) => {
+        console.log(path.join(__dirname, '..', 'storage/avatars'))
         if(!checkFolder(path.join(__dirname, '..', 'storage/avatars', req.body.id))) {
             fs.mkdirSync(path.join(__dirname, '..', 'storage/avatars', req.body.id))
         }
+
         let pathTemp = path.join(__dirname, '..', req.files.avatar[0].path)
         let newPath = path.join(__dirname, '../storage/avatars', req.body.id, req.files.avatar[0].filename)
         fs.renameSync(pathTemp, newPath)
