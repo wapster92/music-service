@@ -59,7 +59,6 @@
                 formData.append('id', this.user.id)
                 const res = await fetch(`${keys.BASE_URL}/api/avatar-add`, {
                     method: 'POST',
-                    mode: 'no-cors',
                     body: formData
                 })
                 const result = await res.json()
