@@ -16,9 +16,7 @@ const app = express()
 
 app.use('/storage', express.static(path.join(__dirname, 'storage')))
 app.use(bodyParser.json())
-app.use(cors({
-    origin: 'http://185.229.227.69'
-}))
+app.use(cors())
 
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
