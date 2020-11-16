@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
-    "dev": "cross-env NODE_ENV=production nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
