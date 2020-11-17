@@ -1,7 +1,6 @@
 <template>
     <div id="app" :class="{'overlay': modal}"
          @keydown.esc="closeModal"
-         @touchstart="swipeMenu"
     >
         <header class="header">
             <div class="header__btn-wrap">
@@ -140,11 +139,11 @@
                     let touchMove = evt.touches[0]
                     let moveSize = touch.screenX - touchMove.screenX
 
-                    if(moveSize < 100 && touch.screenX < touchMove.screenX) {
+                    if(moveSize < 200 && touch.screenX < touchMove.screenX) {
                         this.menuActive = true
                     }
 
-                    if(moveSize > 100 && touch.screenX > touchMove.screenX) {
+                    if(moveSize > 200 && touch.screenX > touchMove.screenX) {
                         this.menuActive = false
                     }
 
