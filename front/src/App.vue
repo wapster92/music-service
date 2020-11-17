@@ -30,7 +30,7 @@
             </div>
         </header>
         <main class="main" :class="{'main--active': menuActive}">
-            <aside class="side-bar" @mouseleave="toggleMenu" @click="closeMenu">
+            <aside class="side-bar" @click="closeMenu">
                 <div class="menu">
                     <nav class="menu-nav">
                         <ul class="menu-nav__list">
@@ -158,7 +158,7 @@
                 document.addEventListener('touchend', touchEnd)
             },
             closeMenu(e) {
-                if(e.target.tagName === 'A' && this.windowWidth <= 1024) {
+                if(e.target.tagName === 'A') {
                     this.menuActive = false
                 }
             }

@@ -22,7 +22,8 @@ router.post('/register', async (req, res) => {
                 auth: true,
                 id: newUser._id,
                 avatar: newUser.avatar,
-                login: newUser.login
+                login: newUser.login,
+                playLists: newUser.playLists
             }))
         } else {
             res.send(JSON.stringify('Такой пользователь уже существует'))

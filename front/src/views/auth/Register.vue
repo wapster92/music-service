@@ -28,7 +28,6 @@
             </div>
             <div class="auth-form__row">
                 <div class="auth-form__error" v-if="!$v.registerForm.repeatPassword.required">Поле обязательно для заполнения</div>
-                <div class="auth-form__error" v-if="!$v.registerForm.repeatPassword.minLength">Минимальная длинна поля 6 символов</div>
                 <div class="auth-form__error" v-if="!$v.registerForm.repeatPassword.sameAs">Пароли не совпадают</div>
                 <input type="password" name="repeatPassword" class="auth-form__input" placeholder="Повторите пароль" v-model="$v.registerForm.repeatPassword.$model">
             </div>
@@ -70,11 +69,10 @@
                 },
                 password: {
                     required,
-                    minLength: minLength(4)
+                    minLength: minLength(6)
                 },
                 repeatPassword: {
                     required,
-                    minLength: minLength(4),
                     sameAs: sameAs('password')
                 },
 
