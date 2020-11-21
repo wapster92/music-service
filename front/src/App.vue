@@ -88,6 +88,7 @@
     }
 
     .overlay {
+        position: fixed;
         &:before {
             content: '';
             position: absolute;
