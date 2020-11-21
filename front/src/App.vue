@@ -1,6 +1,7 @@
 <template>
     <div id="app" :class="{'overlay': modal}"
          @keydown.esc="closeModal"
+         @click="closeMenu"
     >
         <header class="header">
             <div class="header__btn-wrap">
@@ -29,7 +30,7 @@
             </div>
         </header>
         <main class="main" :class="{'main--active': menuActive}">
-            <aside class="side-bar" @click="closeMenu">
+            <aside class="side-bar">
                 <div class="menu">
                     <nav class="menu-nav">
                         <ul class="menu-nav__list">
